@@ -1,0 +1,43 @@
+#include <stdio.h>
+
+void display(int arr[],int size){
+    int i;
+    for(i=0;i<size;i++){
+        printf("The elements at index[%d] is %d\n",i,arr[i]);
+    }
+}
+int insertion(int arr[],int size,int element,int index,int capacity){
+    int i;
+    if(size>=capacity){
+        return -1;
+    }
+    for(i=size-1;i>=index;i--){
+        arr[i+1]=arr[i];
+    }
+    arr[index]=element;
+    return 1;
+}
+
+int main(){
+    int arr[100];
+    int i;
+    int size,index,element;
+    printf("Enter the number of elements in a array:\n");
+    scanf("%d",&size);
+    printf("Enter the elements of array:\n");
+    for(i=0;i<size;i++){
+        scanf("%d",&arr[i]);
+    }
+    printf("Enter the element to be inserted:\n");
+    scanf("%d",&element);
+    printf("Enter the index number where the element is to be inserted:\n");
+    scanf("%d",&index);
+    printf("The elements before inserting:\n");
+    display(arr,size);
+    insertion(arr,size,element,index,100);
+    size+=1;
+    printf("The elemnts after inserting :\n");
+    display(arr,size);
+    return 0;
+    
+}
